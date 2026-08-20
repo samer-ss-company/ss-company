@@ -1,0 +1,34 @@
+// @import "tailwindcss";
+// @import "@nuxt/ui";
+
+
+// Layout
+@use './layouts/layout';
+@use './layouts/header';
+@use './layouts/navigation';
+@use './layouts/footer';
+
+// Components
+@use './components/icons';
+@use './components/cta';
+@use './components/marquee';
+@use './components/spacing';
+@use './components/tabbing';
+@use './components/icon-card';
+@use './components/icon-list';
+@use './components/core-capabilities';
+@use './components/form';
+// @use './components/cursor';
+
+// Module
+@use './modules/popup';
+@use './modules/hero-banner';
+@use './modules/content-section';
+@use './modules/product-card';
+@use './modules/specification';
+@use './modules/image-galelry';
+@use './modules/video-section';
+@use './modules/vehicle-performance';
+@use './modules/our-mission';
+@use './modules/contact';
+@use './modules/product-list';

@@ -1,0 +1,25 @@
+@use "./../variables/variables" as *;
+
+.form {
+    &-wrapper {
+        display: grid;
+        gap: 24px;
+        grid-template-columns: 1fr;
+    }
+    &-group {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    &-label {
+        font-size: $form-label-text;
+        font-weight: 400;
+    }
+
+    &-control {
+        border: solid 1px $border-color;
+        // border-radius: 12px;
+        font-size: $base-font-size;
+        padding: 12px 24px;
+    }
+}

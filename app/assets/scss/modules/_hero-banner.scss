@@ -1,0 +1,300 @@
+@use "./../variables/variables" as *;
+
+.banner {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    padding-top: 96px;
+
+    &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20%;
+        height: 100%;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+        z-index: 1;
+    }
+
+    // &::after {
+    //     content: '';
+    //     position: absolute;
+    //     top: 0;
+    //     left: 0;
+    //     width: 100%;
+    //     height: 400px;
+    //     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    // }
+
+    .fullwidth-container {
+        position: relative;
+        z-index: 11;
+        height: 100%;
+    }
+
+    &-video {
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+        top: 0;
+        left: 0;
+    }
+
+    &-wrapper {
+        display: grid;
+        grid-template-columns: 15% 1fr;
+        height: 100%;
+    }
+
+    &-sidebar {
+        height: 100%;
+        display: flex;
+        align-items: center;
+
+        &-car-list {
+            list-style: none;
+            color: $base-light-color;
+
+            &-items {
+                & > a {
+                    margin: 36px 0;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+                    color: $base-light-color;
+                    font-size: 16px;
+                }
+
+                .car-icon {
+                    width: 56px;
+                    transition: all 300ms;
+
+                    .line-icon {
+                    }
+                    .filled-icon {
+                        width: 0;
+                        opacity: 0;
+                    }
+                }
+
+                &:hover,
+                &.active {
+                    .car-icon {
+                        margin-left: 10px;
+
+                        .line-icon {
+                            width: 0;
+                            opacity: 0;
+                        }
+                        .filled-icon {
+                            width: 80px;
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &-body {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        flex-direction: column;
+        text-align: center;
+        color: #fff;
+        gap: 16px;
+
+        .h1 {
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke: 1px;            
+        }
+
+        p {
+            max-width: 80%;
+        }
+    }
+
+    // Inenr banner
+    &.inner-banner {
+        background-position: bottom right;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        &::after {
+            display: none;
+        }
+        .banner {
+            &-wrapper {
+                grid-template-columns: 1fr;
+            }
+            &-body {
+                align-items: start;
+                text-align: left;
+                justify-content: end;
+                padding-bottom: 48px;
+
+                .h1 {
+                    -webkit-text-fill-color: white;
+                    -webkit-text-stroke: 0;
+                }
+
+                p {
+                    text-align: left;
+                }
+            }
+        }
+    }
+
+    //About Hero Banner
+    &.about-hero {
+        .banner {
+            &-wrapper {
+                display: grid;
+                align-items: center;
+            }
+            &-body {
+                max-width: 40%;
+            }
+        }
+    }
+
+    //Contact Hero Banner
+    &.contact-hero {
+        height: 50vh;
+
+        .banner {
+            &-wrapper {
+                display: grid;
+                align-items: center;
+            }
+            &-body {
+                max-width: 40%;
+            }
+        }
+    }
+
+    @media screen and (max-device-width: 1199.98px) {
+        &-wrapper {
+            grid-template-columns: 20% 1fr;
+        }
+    }
+
+    @media screen and (max-device-width: 991.98px) {
+        height: auto;
+        // padding: 0;
+        // display: flex;
+        // flex-direction: column-reverse;
+        padding-top: 0;
+        padding-bottom: 48px;
+
+        &::before{
+            width: 70%;
+        }
+
+        // &-video {
+        //     position: relative;
+        //     height: 25vh;
+        // }
+        // &-sidebar {
+        //     display: none;
+        // }
+        .banner-video {
+            height: 100%;
+        }
+        &-wrapper {
+            grid-template-columns: 1fr;
+        }
+        &-body {
+            text-align: left;
+            align-items: start;
+            // color: $base-text-color;
+
+            .h1 {
+                // -webkit-text-fill-color: $base-text-color;
+                // -webkit-text-stroke: 0;
+            }
+
+            p {
+                text-align: left;
+                max-width: 100%;
+            }
+        }
+
+        // Inenr banner
+        &.inner-banner {
+            .banner {
+                &-wrapper {
+                }
+                &-body {
+                    max-width: 50%;
+                    color: $base-light-color;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 767.98px) {
+        // Inenr banner
+        &.inner-banner {
+            min-height: 70vh;
+            align-items: end;
+            position: relative;
+            display: flex;
+
+            &::before {
+                content: "";
+                display: block;
+                position: absolute;
+                top: auto;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                // background-color: red;
+                background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9));
+                z-index: 1;
+            }
+            .banner {
+                &-wrapper {
+                }
+                &-body {
+                    max-width: 100%;
+                    color: $base-light-color;
+                    padding-bottom: 0;
+                }
+            }
+        }
+
+        //Contact Hero Banner
+        &.contact-hero {
+            height: auto;
+            min-height: auto;
+
+            .banner {
+                &-wrapper {
+                }
+                &-body {
+                    padding-bottom: 0;
+                }
+            }
+        }
+
+        &.hero-right-image {
+            background-position: center right;
+        }
+    }
+}

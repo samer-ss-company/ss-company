@@ -1,0 +1,38 @@
+@use "./../variables/variables" as *;
+
+.core-capabilities {
+    background-color: $base-light-grey;
+    &-wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    &-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+
+        & > li {
+            padding: 24px 48px;
+            border-radius: 100px;
+            background-color: $base-light-color;
+        }
+    }
+
+    @media screen and (max-width: 767.98px) {
+        &-wrapper {
+            gap: 0;
+        }
+
+        &-list {
+            gap: 8px;
+
+            & > li {
+                padding: 8px 16px;
+                text-align: center;
+            }
+        }
+    }
+}

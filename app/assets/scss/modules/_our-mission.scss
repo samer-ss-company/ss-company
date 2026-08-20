@@ -1,0 +1,62 @@
+@use "./../variables/variables" as *;
+
+.our {
+    &-mission {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 48px;
+        background-color: $base-dark-color;
+        border-radius: $base-border-radius;
+        gap: 80px;
+        color: $base-light-color;
+
+        &-content {
+            display: flex;
+            gap: 16px;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        &-image {
+            border-radius: $base-border-radius;
+            overflow: hidden;
+            position: relative;
+            padding: 16px;
+
+            img {
+                border-radius: 12px;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                border: solid 1px $primary-color;
+                width: 99%;
+                height: 99%;
+                left: 0;
+                top: 0;
+                border-radius: $base-border-radius;
+            }
+        }
+
+        &-vision-wrapper {
+        }
+
+        &.our-vision {
+            direction: rtl;
+        }
+    }
+
+    @media screen and (max-width: 991.98px) {
+        &-mission {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+    }
+
+    @media screen and (max-width: 767.98px) {
+        &-mission {
+            padding: 24px;
+        }
+    }
+}

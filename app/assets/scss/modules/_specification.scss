@@ -1,0 +1,27 @@
+@use "./../variables/variables" as *;
+
+.specification {
+    background-color: $base-light-grey;
+    border-radius: $base-border-radius;
+    padding: 48px;
+    display: grid;
+    grid-template-columns: 1fr;
+
+    .icon-card {
+        &:last-child {
+            grid-column: 1 / -1;
+        }
+    }
+
+    @media screen and (max-width: 767.98px) {
+        padding: 0;
+        background-color: transparent;
+
+        .icon-card {
+            background-color: $base-light-color;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+            padding: 16px;
+            gap: 24px;
+        }
+    }
+}

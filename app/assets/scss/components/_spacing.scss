@@ -1,0 +1,39 @@
+.section-spacing-tb {
+    padding: 108px 0;
+}
+
+.section-spacing-t {
+    padding-top: 108px;
+}
+
+.section-spacing-b {
+    padding-bottom: 108px;
+}
+
+@media screen and (max-device-width: 1199.98px) {
+    .section-spacing-tb {
+        padding: 72px 0;
+    }
+
+    .section-spacing-t {
+        padding-top: 72px;
+    }
+
+    .section-spacing-b {
+        padding-bottom: 72px;
+    }
+}
+
+@media screen and (max-device-width: 991.98px) {
+    .section-spacing-tb {
+        padding: 48px 0;
+    }
+
+    .section-spacing-t {
+        padding-top: 48px;
+    }
+
+    .section-spacing-b {
+        padding-bottom: 48px;
+    }
+}

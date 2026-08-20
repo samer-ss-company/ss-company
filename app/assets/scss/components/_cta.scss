@@ -1,0 +1,47 @@
+@use "./../variables/variables" as *;
+
+.cta {
+    padding: 16px 32px;
+    border: none;
+    box-shadow: none;
+    font-size: $cta-text;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+
+    &-primary {
+        background-color: $primary-color;
+        color: $base-light-color;
+
+        &:hover {
+            background-color: $secondary-color;
+        }
+    }
+    &-outline-light {
+        border: solid 1px $base-light-color;
+        color: $base-light-color;
+        background: transparent;
+
+        &:hover {
+            background-color: $primary-color;
+            color: $base-light-color;
+        }
+    }
+
+    &-outline-dark {
+        border: solid 1px $base-dark-color;
+        color: $base-dark-color;
+
+        &:hover {
+            background-color: $primary-color;
+            color: $base-light-color;
+        }
+    }
+
+    @media screen and (max-device-width: 991.98px) {
+        font-size: $cta-text-xs;
+        padding: 12px 24px;
+    }
+}

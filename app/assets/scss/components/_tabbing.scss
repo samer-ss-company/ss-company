@@ -1,0 +1,85 @@
+@use "./../variables/variables" as *;
+
+.tabbing {
+    &-wrapper {
+        background-color: $primary-light-color;
+        border-bottom: solid 1px $border-color;
+        position: sticky;
+        top: 88px;
+        z-index: 10;
+        // padding: 12px 0;
+    }
+
+    &-row {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+
+        &-left {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+        }
+
+        &-items {
+            padding: 24px 0;
+            text-align: center;
+            font-size: $heading-6;
+            font-weight: 500;
+            cursor: pointer;
+
+            &.active {
+                color: $primary-color;
+                border-bottom: solid 1px $primary-color;
+            }
+        }
+
+        &-right {
+            display: flex;
+            justify-content: end;
+            gap: 12px;
+
+            .cta {
+                padding: 8px 16px;
+            }
+        }
+    }
+
+    &-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 96px;
+        padding-top: 96px;
+    }
+
+    @media screen and (max-width: 767.98px) {
+        &-wrapper {
+            top: 70px;
+        }
+    }
+
+    @media screen and (max-width: 767.98px) {
+        &-row {
+            grid-template-columns: 1fr;
+
+            &-items {
+                font-size: 14px;
+            }
+
+            &-left {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 16px;
+            }
+
+            &-right {
+                display: none;
+            }
+        }
+
+        &-content {
+            gap: 48px;
+            padding-top: 48px;
+        }
+    }
+}

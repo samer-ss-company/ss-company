@@ -1,0 +1,242 @@
+@use "./../variables/variables" as *;
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    &-logo {
+        width: 196px;
+    }
+    &-nav {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        font-size: $nav-text;
+        font-weight: 400;
+        // letter-spacing: 2px;
+
+        &-item {
+            padding: 0 24px;
+            text-transform: uppercase;
+
+            .angle-down {
+                display: none;
+            }
+
+            &.dropdown {
+                .angle-down {
+                    display: block;
+                }
+
+                .dropdown {
+                    &-menu {
+                        padding: 60px;
+                        // padding-bottom: 0;
+                        position: absolute;
+                        width: 100%;
+                        left: 0;
+                        top: 100%;
+                        background-color: $base-light-color;
+                        max-height: 100vh;
+                        overflow: auto;
+
+                        background-color: #212121;
+
+                        opacity: 0;
+                        visibility: hidden;
+                        transform: translateY(15px);
+
+                        transition: all 0.3s ease;
+
+                        &.active {
+                            opacity: 1;
+                            visibility: visible;
+                            transform: translateY(0);
+                        }
+
+                        .close-dropdown {
+                            position: absolute;
+                            right: 20px;
+                            top: 20px;
+                            color: $base-light-color;
+                            font-size: 20px;
+                            width: 32px;
+                            border: solid 1px $base-light-color;
+                            height: 32px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                    }
+
+                    &-vehilce {
+                        &-items {
+                            display: grid;
+                            gap: 16px;
+                            padding: 16px;
+                            border: solid 1px rgba(255, 255, 255, 0.1);
+                            color: $base-light-color;
+                            text-align: center;
+                        }
+
+                        &-list {
+                            display: grid;
+                            grid-template-columns: repeat(4, 1fr);
+                            gap: 24px;
+                        }
+
+                        &-body {
+                            .h6 {
+                                font-size: $nav-text;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &-items {
+            display: flex;
+            gap: 12px;
+            color: $base-light-color;
+            align-items: center;
+            cursor: pointer;
+
+            &:hover {
+                color: $primary-color;
+            }
+        }
+
+        .close-menu {
+            display: none;
+        }
+    }
+
+    .menu-toggle {
+        width: 54px;
+        height: 54px;
+        border: solid 1px $base-light-color;
+        font-size: 32px;
+        color: $base-light-color;
+        align-items: center;
+        justify-content: center;
+        display: none;
+        margin-right: 16px;
+    }
+
+    @media screen and (max-device-width: 991.98px) {
+        .close-menu {
+            font-size: 24px;
+            position: absolute;
+            right: 24px;
+            top: 24px;
+        }
+        .menu-toggle {
+            display: flex;
+            margin-left: auto;
+        }
+
+        &-nav {
+            position: fixed;
+            left: -100%;
+            height: 100vh;
+            width: 100%;
+            top: 0;
+            overflow: auto;
+            transition: 0.4s;
+            background-color: $base-light-color;
+            flex-direction: column;
+            padding: 48px 0;
+
+            &.active {
+                left: 0;
+            }
+
+            &-item {
+                padding: 0;
+
+                &.dropdown {
+                    position: relative;
+
+                    .dropdown-menu {
+                        position: relative;
+                        top: 0;
+                        display: none;
+
+                        &.active {
+                            display: flex;
+                        }
+                    }
+                }
+            }
+
+            &-items {
+                color: $base-text-color;
+                padding: 24px;
+                border-bottom: solid 1px $border-color;
+            }
+
+            .close-menu {
+                display: block;
+            }
+        }
+    }
+    @media screen and (max-device-width: 767.98px) {
+        .menu-toggle {
+            width: 36px;
+            height: 36px;
+            font-size: 24px;
+        }
+        .cta {
+            width: 36px;
+            height: 36px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .cta-text {
+                display: none;
+            }
+        }
+
+        &-logo {
+            width: 128px;
+        }
+        &-nav {
+            &-item {
+                &.dropdown {
+                    .dropdown {
+                        &-menu {
+                            padding: 24px;
+
+                            .close-dropdown {
+                                top: 0;
+                                right: 0;
+                                width: 24px;
+                                height: 24px;
+                            }
+                        }
+                        &-vehilce {
+                            &-list {
+                                grid-template-columns: repeat(3, 1fr);
+                                gap: 16px;
+                            }
+                            &-items {
+                                padding: 8px;
+                                gap: 8px;
+                            }
+
+                            &-body {
+                                .h6 {
+                                    font-size: 12px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

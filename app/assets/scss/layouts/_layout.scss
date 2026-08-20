@@ -1,0 +1,109 @@
+@use "./../variables/variables" as *;
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+img {
+    max-width: 100%;
+}
+body {
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+    font-weight: 300;
+    // cursor: none;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.container,
+.fullwidth-container {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+.fullwidth-container {
+    max-width: 100%;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.h1 {
+    font-size: $heading-1;
+    line-height: 1.2;
+}
+.h2 {
+    font-size: $heading-2;
+    font-weight: 600;
+    line-height: 1.2;
+}
+.h3 {
+    font-size: $heading-3;
+    line-height: 1.2;
+    font-weight: 500;
+}
+.h4 {
+    font-size: $heading-4;
+    line-height: 1.2;
+    font-weight: 500;
+}
+.h5 {
+    font-size: $heading-5;
+    line-height: 1.2;
+    font-weight: 500;
+}
+.h6 {
+    font-size: $heading-6;
+    line-height: 1.2;
+    font-weight: 500;
+}
+
+@media screen and (max-device-width: 1199.98px) {
+    .fullwidth-container {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}
+
+@media screen and (max-device-width: 991.98px) {
+    body {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-device-width: 767.98px) {
+    body {
+        font-size: 16px;
+    }
+    .h5 {
+        font-size: $heading-5-sm;
+    }
+    .h6 {
+        font-size: $heading-6-sm;
+    }
+}

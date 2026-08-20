@@ -1,0 +1,58 @@
+@use "./../variables/variables" as *;
+
+.header {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    background-color: rgba(0, 0, 0, 0.15);
+    border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px); /* For Safari support */
+
+    &::before {
+        // content: "";
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+        // width: 100%;
+        // height: 400px;
+        // background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+    }
+
+    .fullwidth-container {
+        position: relative;
+        z-index: 1;
+    }
+
+    &.fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: $base-dark-color;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        animation: slideDown 0.4s ease;
+        z-index: 20;
+
+        &::after {
+            display: none;
+        }
+    }
+
+    @media screen and (max-device-width: 991.98px) {
+        position: relative;
+        background-color: rgba(0, 0, 0, 0.9);
+        border-bottom: solid 1px rgba(0, 0, 0, 1);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
