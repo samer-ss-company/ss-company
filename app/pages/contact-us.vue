@@ -72,7 +72,7 @@ const submitForm = async () => {
                             </li>
                             <li>
                                 <NuxtLink to="mailto:sales@ss-company.com"><span class="ss-email"></span>
-                                    sales@ss-company.com</NuxtLink>
+                                    sales@ss-company.comcom</NuxtLink>
                             </li>
                             <li>
                                 <NuxtLink to="tel:+971 55 419 6611"><span class="ss-phone"></span> +971 55 419 6611
