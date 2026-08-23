@@ -9,5 +9,5 @@ export default defineNuxtConfig({
     smtpPort: process.env.SMTP_PORT,
     smtpUser: process.env.SMTP_USER,
     smtpPassword: process.env.SMTP_PASSWORD,
-  }
+  },
 })
