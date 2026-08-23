@@ -4,11 +4,6 @@ import HeroBanner from '~/components/HeroBanner.vue'
 
 const vehicle = vehicles.contact
 
-interface Web3FormsResponse {
-    success: boolean
-    message?: string
-}
-
 const form = reactive({
     name: '',
     email: '',
@@ -26,41 +21,28 @@ const submitForm = async () => {
     errorMessage.value = ''
 
     try {
-        const response = await $fetch<Web3FormsResponse>(
-            'https://api.web3forms.com/submit',
-            {
-                method: 'POST',
-                body: {
-                    access_key: 'a82938c6-0ec7-4f46-927e-f228902b2d2a',
-                    subject: 'New Website Contact Enquiry',
-                    from_name: 'Double S Trading',
-                    name: form.name,
-                    email: form.email,
-                    phone: form.phone,
-                    message: form.message,
-                    botcheck: '',
-                },
-            }
-        )
-
-        if (!response.success) {
-            throw new Error(response.message || 'Submission failed')
-        }
-
-        successMessage.value =
-            'Thank you! Your message has been sent successfully.'
-
-        Object.assign(form, {
-            name: '',
-            email: '',
-            phone: '',
-            message: '',
+        const response = await $fetch('/api/contact', {
+            method: 'POST',
+            body: {
+                name: form.name,
+                email: form.email,
+                phone: form.phone,
+                message: form.message,
+            },
         })
-    } catch (error) {
+
+        successMessage.value = 'Thank you! Your message has been sent successfully.'
+
+        form.name = ''
+        form.email = ''
+        form.phone = ''
+        form.message = ''
+    } catch (error: any) {
         console.error(error)
 
         errorMessage.value =
-            'Sorry, your message could not be sent. Please try again.'
+            error?.data?.message ||
+            'Something went wrong. Please try again.'
     } finally {
         loading.value = false
     }
@@ -83,7 +65,7 @@ const submitForm = async () => {
 
                     <div class="contact-details">
                         <ul class="address-list">
-                            <li>ˀ
+                            <li>
                                 <NuxtLink to="https://maps.app.goo.gl/v6qkpnAwLMmWqSEr6" target="_blank"><span
                                         class="ss-map-pin"></span> 57pr+gr8 - P7 floor - Business Bay -
                                     Dubai - United Arab Emirates</NuxtLink>
@@ -112,26 +94,30 @@ const submitForm = async () => {
                         <form class="form-wrapper" @submit.prevent="submitForm">
                             <div class="form-group">
                                 <label for="name" class="form-label">Full Name</label>
-                                <input id="name" class="form-control" v-model.trim="form.name" type="text" name="name"
-                                    autocomplete="name" required>
+
+                                <input id="name" v-model.trim="form.name" class="form-control" type="text" name="name"
+                                    autocomplete="name" required />
                             </div>
 
                             <div class="form-group">
                                 <label for="email" class="form-label">Email Address</label>
-                                <input id="email" class="form-control" v-modˀel.trim="form.email" type="email"
-                                    name="email" autocomplete="email" required>
+
+                                <input id="email" v-model.trim="form.email" class="form-control" type="email"
+                                    name="email" autocomplete="email" required />
                             </div>
 
                             <div class="form-group">
                                 <label for="phone" class="form-label">Phone Number</label>
-                                <input id="phone" class="form-control" v-model.trim="form.phone" type="number" name="phone"
-                                    autocomplete="tel">
+
+                                <input id="phone" v-model.trim="form.phone" class="form-control" type="tel" name="phone"
+                                    autocomplete="tel" />
                             </div>
 
                             <div class="form-group">
                                 <label for="message" class="form-label">Message</label>
-                                <textarea id="message" class="form-control" v-model.trim="form.message" name="message"
-                                    rows="5" required />
+
+                                <textarea id="message" v-model.trim="form.message" class="form-control" name="message"
+                                    rows="5" required></textarea>
                             </div>
 
                             <div class="form-group">
