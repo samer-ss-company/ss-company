@@ -2535,16 +2535,16 @@ _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw
 const assets = {
   "/index.mjs": {
     "type": "text/javascript; charset=utf-8",
-    "etag": "\"1ee4d-pDHUGujcT19cOEimrFPsnjIXdqo\"",
-    "mtime": "2026-08-24T07:14:59.068Z",
-    "size": 126541,
+    "etag": "\"1ee46-JhQuCIuaGcLDnrefCOl9jGOq5Vg\"",
+    "mtime": "2026-08-24T07:42:29.185Z",
+    "size": 126534,
     "path": "index.mjs"
   },
   "/index.mjs.map": {
     "type": "application/json",
-    "etag": "\"73016-CuAkL04as8jNdq/8f6clgwBSUqs\"",
-    "mtime": "2026-08-24T07:14:59.068Z",
-    "size": 471062,
+    "etag": "\"72ff3-LEcyffGU2wQaOrZ+X8ixLvGdbYU\"",
+    "mtime": "2026-08-24T07:42:29.185Z",
+    "size": 471027,
     "path": "index.mjs.map"
   }
 };
@@ -3527,7 +3527,7 @@ const contact_post = defineEventHandler(async (event) => {
     await transporter.sendMail({
       from: `"Double S Trading Website" <${config.smtpUser}>`,
       // Change this if you really intended gmaill.com
-      to: "uideveloper.mohit@gmail.com",
+      to: "sales@ss-company.com",
       replyTo: email,
       subject: `New Contact Enquiry from ${name}`,
       html: `
