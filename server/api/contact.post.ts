@@ -30,7 +30,7 @@ export default defineEventHandler(async (event) => {
             from: `"Double S Trading Website" <${config.smtpUser}>`,
 
             // Change this if you really intended gmaill.com
-            to: 'uideveloper.mohit@gmail.com',
+            to: 'sales@ss-company.com',
 
             replyTo: email,
 
