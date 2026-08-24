@@ -1,3 +1,116 @@
+<script setup lang="ts">
+import { ref, watch, onMounted, onUnmounted } from 'vue'
+import { useRoute } from '#app'
+
+const route = useRoute()
+
+const isMenuOpen = ref(false)
+
+const activeDropdown = ref<string | null>(null)
+
+// Mobile menu
+const toggleMenu = () => {
+    isMenuOpen.value = !isMenuOpen.value
+}
+
+// Toggle dropdown
+const toggleDropdown = (menu: string) => {
+    activeDropdown.value =
+        activeDropdown.value === menu ? null : menu
+}
+
+// Check if dropdown is active
+const isDropdownOpen = (menu: string) => {
+    return activeDropdown.value === menu
+}
+
+// Close everything
+const closeMenu = () => {
+    isMenuOpen.value = false
+    activeDropdown.value = null
+}
+
+// Close on route change
+watch(
+    () => route.fullPath,
+    () => {
+        closeMenu()
+    }
+)
+
+// Close on resize
+const handleResize = () => {
+    if (window.innerWidth > 991) {
+        closeMenu()
+    }
+}
+
+onMounted(() => {
+    window.addEventListener('resize', handleResize)
+})
+
+onUnmounted(() => {
+    window.removeEventListener('resize', handleResize)
+})
+
+// Popup
+const isPopupOpen = ref(false)
+
+const openPopup = () => {
+    isPopupOpen.value = true
+}
+
+const closePopup = () => {
+    isPopupOpen.value = false
+}
+
+
+
+const form = reactive({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+})
+
+const loading = ref(false)
+const successMessage = ref('')
+const errorMessage = ref('')
+
+const submitForm = async () => {
+    loading.value = true
+    successMessage.value = ''
+    errorMessage.value = ''
+
+    try {
+        const response = await $fetch('/api/contact', {
+            method: 'POST',
+            body: {
+                name: form.name,
+                email: form.email,
+                phone: form.phone,
+                message: form.message,
+            },
+        })
+
+        successMessage.value = 'Thank you! Your message has been sent successfully.'
+
+        form.name = ''
+        form.email = ''
+        form.phone = ''
+        form.message = ''
+    } catch (error: any) {
+        console.error(error)
+
+        errorMessage.value =
+            error?.data?.message ||
+            'Something went wrong. Please try again.'
+    } finally {
+        loading.value = false
+    }
+}
+</script>
+
 <template>
     <nav class="navbar">
         <div class="navbar-logo">
@@ -18,7 +131,8 @@
                     <div class="dropdown-vehilce-list">
                         <NuxtLink to="/apc-rockx" class="dropdown-vehilce-items" @click="closeMenu">
                             <div class="dropdown-vehilce-image">
-                                <img src="/images/apc-rockx/apc-rockx-menu.jpg" width="586" height="486" alt="APC Predator">
+                                <img src="/images/apc-rockx/apc-rockx-menu.jpg" width="586" height="486"
+                                    alt="APC Predator">
                             </div>
                             <div class="dropdown-vehilce-body">
                                 <h6 class="h6">APC Rockx</h6>
@@ -182,98 +296,54 @@
             <button class="popup-close" @click="closePopup">
                 ✕
             </button>
-            <div class="popup-header"><h4 class="h4">Get in Touch</h4></div>
+            <div class="popup-header">
+                <h4 class="h4">Get in Touch</h4>
+            </div>
             <div class="popup-body">
-                <form action="" class="form-wrapper">
+                <form class="form-wrapper" @submit.prevent="submitForm">
                     <div class="form-group">
-                        <label for="" class="form-label">Name</label>
-                        <input type="text" class="form-control" />
+                        <label for="name" class="form-label">Full Name</label>
+
+                        <input id="name" v-model.trim="form.name" class="form-control" type="text" name="name"
+                            autocomplete="name" required />
                     </div>
+
                     <div class="form-group">
-                        <label for="" class="form-label">Phone</label>
-                        <input type="number" class="form-control" />
+                        <label for="email" class="form-label">Email Address</label>
+
+                        <input id="email" v-model.trim="form.email" class="form-control" type="email" name="email"
+                            autocomplete="email" required />
                     </div>
+
                     <div class="form-group">
-                        <label for="" class="form-label">Email</label>
-                        <input type="email" class="form-control" />
+                        <label for="phone" class="form-label">Phone Number</label>
+
+                        <input id="phone" v-model.trim="form.phone" class="form-control" type="tel" name="phone"
+                            autocomplete="tel" />
                     </div>
+
                     <div class="form-group">
-                        <label for="" class="form-label">Message</label>
-                        <textarea name="" class="form-control" id=""></textarea>
+                        <label for="message" class="form-label">Message</label>
+
+                        <textarea id="message" v-model.trim="form.message" class="form-control" name="message" rows="5"
+                            required></textarea>
                     </div>
+
                     <div class="form-group">
-                        <button type="submit" class="cta cta-primary"> Submit</button>
-                    </div>                    
+                        <button type="submit" :disabled="loading" class="cta cta-primary">
+                            {{ loading ? 'Sending...' : 'Send Message' }}
+                        </button>
+
+                        <p v-if="successMessage" class="form-success">
+                            {{ successMessage }}
+                        </p>
+
+                        <p v-if="errorMessage" class="form-error">
+                            {{ errorMessage }}
+                        </p>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
 </template>
-
-
-<script setup>
-import { ref, watch, onMounted, onUnmounted } from 'vue'
-import { useRoute } from '#app'
-
-const route = useRoute()
-
-const isMenuOpen = ref(false)
-const activeDropdown = ref(null)
-
-// Mobile menu
-const toggleMenu = () => {
-    isMenuOpen.value = !isMenuOpen.value
-}
-
-// Toggle dropdown
-const toggleDropdown = (menu) => {
-    activeDropdown.value =
-        activeDropdown.value === menu ? null : menu
-}
-
-// Check if dropdown is active
-const isDropdownOpen = (menu) => {
-    return activeDropdown.value === menu
-}
-
-// Close everything
-const closeMenu = () => {
-    isMenuOpen.value = false
-    activeDropdown.value = null
-}
-
-// Close on route change
-watch(
-    () => route.fullPath,
-    () => {
-        closeMenu()
-    }
-)
-
-// Close on resize
-const handleResize = () => {
-    if (window.innerWidth > 991) {
-        closeMenu()
-    }
-}
-
-onMounted(() => {
-    window.addEventListener('resize', handleResize)
-})
-
-onUnmounted(() => {
-    window.removeEventListener('resize', handleResize)
-})
-
-
-// Popup
-const isPopupOpen = ref(false)
-
-const openPopup = () => {
-    isPopupOpen.value = true
-}
-
-const closePopup = () => {
-    isPopupOpen.value = false
-}
-</script>

@@ -1001,8 +1001,8 @@ const _inlineRuntimeConfig = {
   "public": {},
   "smtpHost": "smtp.gmail.com",
   "smtpPort": "465",
-  "smtpUser": "uideveloper.mohit@gmail.com",
-  "smtpPassword": "xvvv rmho dvoz aabw",
+  "smtpUser": "sales@ss-company.com",
+  "smtpPassword": "kkdu purp rplr vdtr",
   "icon": {
     "serverKnownCssClasses": []
   }
@@ -2532,7 +2532,22 @@ _dOndQyOYtuoST9mzOUrJATCROxzn9Zc1rYHzugaEASk,
 _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw
 ];
 
-const assets = {};
+const assets = {
+  "/index.mjs": {
+    "type": "text/javascript; charset=utf-8",
+    "etag": "\"1ee46-NrzfuzEoWuWjNm3a23Xze+lU8wY\"",
+    "mtime": "2026-08-24T06:48:30.824Z",
+    "size": 126534,
+    "path": "index.mjs"
+  },
+  "/index.mjs.map": {
+    "type": "application/json",
+    "etag": "\"72ff3-LEcyffGU2wQaOrZ+X8ixLvGdbYU\"",
+    "mtime": "2026-08-24T06:48:30.824Z",
+    "size": 471027,
+    "path": "index.mjs.map"
+  }
+};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));
@@ -3512,7 +3527,7 @@ const contact_post = defineEventHandler(async (event) => {
     await transporter.sendMail({
       from: `"Double S Trading Website" <${config.smtpUser}>`,
       // Change this if you really intended gmaill.com
-      to: "uideveloper.mohit@gmail.com",
+      to: "sales@ss-company.com",
       replyTo: email,
       subject: `New Contact Enquiry from ${name}`,
       html: `
