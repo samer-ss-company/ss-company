@@ -2025,5 +2025,17 @@ export const vehicles = {
             buttonLink: '/',
             bannerClass: 'contact-hero'
         },
+    },
+
+    brochure: {
+        herobanner: {
+            title: 'Brochure',
+            description: '',
+            banner: '/images/about-hero.jpg',
+            bannertxt: 'Scroll For More',
+            showButton: false,
+            buttonLink: '/',
+            bannerClass: 'contact-hero'
+        },
     }
 }

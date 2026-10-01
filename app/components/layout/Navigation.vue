@@ -276,9 +276,9 @@ const submitForm = async () => {
             <!-- <li class="navbar-nav-item">
                 <NuxtLink to="/" class="navbar-nav-items">Commercial Solutions</NuxtLink>
             </li> -->
-            <!-- <li class="navbar-nav-item">
-                <NuxtLink to="/" class="navbar-nav-items">Projects</NuxtLink>
-            </li> -->
+            <li class="navbar-nav-item">
+                <NuxtLink to="/brochure" class="navbar-nav-items">Brochure</NuxtLink>
+            </li>
             <li class="navbar-nav-item">
                 <NuxtLink to="/contact-us" class="navbar-nav-items" @click="closeMenu">Contact Us</NuxtLink>
             </li>

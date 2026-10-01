@@ -1,0 +1,35 @@
+@use "./../variables/variables" as *;
+
+.brochure-section {
+  width: 100%;
+  padding: 40px 0;
+}
+
+.brochure-wrapper {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.publuu-flipbook {
+  display: block;
+  width: 100%;
+  height: 750px;
+  border: 0;
+}
+
+@media (max-width: 991px) {
+  .publuu-flipbook {
+    height: 600px;
+  }
+}
+
+@media (max-width: 767px) {
+  .brochure-section {
+    padding: 20px 0;
+  }
+
+  .publuu-flipbook {
+    height: 500px;
+  }
+}
